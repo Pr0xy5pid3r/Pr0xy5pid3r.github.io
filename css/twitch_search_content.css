@@ -1,0 +1,36 @@
+.contentResult
+{
+	position: relative;
+	width: 100%;
+	margin: 10px;
+	background-color: #d6d6d6;
+}
+
+.contentResult-img
+{
+	min-width: 150px;
+	max-width: 150px;
+}
+
+.contentResult-title
+{
+	position: absolute;
+	top: 0px;
+	margin-left: 20px;
+	font-weight: bold;
+	font-size: 125%;
+}
+
+.contentResult-desc1
+{
+	position: absolute;
+	top: 30px;
+	margin-left: 20px;
+}
+
+.contentResult-desc2
+{
+	position: absolute;
+	bottom: 10px;
+	margin-left: 20px;
+}

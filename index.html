@@ -1,7 +1,104 @@
 <!DOCTYPE html>
 <html>
+<title>Twitch API Viewer</title>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/page_style.css">
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<div class="main_container">
+	<div class="search_area">
+		<select id="query_selection">
+		  <option value="streams" selected >Streams</option> 
+		  <option value="channels">Channels</option>
+		  <option value="games">Games</option>
+		</select>
+		<input type="text" id="query_input" name="query_input" placeholder="Search Query...">
+		<button id="search_button">Search</button>
+	</div>
+
+	<div class="search_result">
+		<div class="values">
+			<div class="value_results">
+				<span id="total_results">Total Results: 0</span>
+			</div>
+
+			<div class="page_components" id="page_components">
+				<input class="page_left" id="page_left" type="image" src="images/left_arrow.png" /> <span id="page_results" class="page_results">1/1</span> <input class="page_right"  id="page_right" type="image" src="images/right_arrow.png" />
+			</div>
+		</div>
+
+		<div class="content" id="content">
+		</div>
+	</div>
+</div>
+
+<script src="scripts/twitch_api.js" type="text/javascript" ></script>
+<script src="scripts/util/js_util.js" type="text/javascript" ></script>
+<script src="scripts/nav/page_navigation.js" type="text/javascript" ></script>
+<script type="text/javascript">
+	var queryInput;
+
+	window.addEventListener( "load", init );
+
+    function init() 
+	{
+		initTwitchAPI();
+	    initSearchButton();
+	    initQueryBar();
+	}
+
+	function initSearchButton()
+	{
+		var searchButton = document.getElementById("search_button");
+		searchButton.addEventListener( "click", performSearch );
+	}
+
+	function initQueryBar()
+	{
+		queryInput = document.getElementById("query_input");
+		queryInput.addEventListener( "keypress", onKeyPressed );
+	}
+
+	function initTwitchAPI()
+	{
+		var contentDiv = document.getElementById( "content" );
+		var totalResultsSpan = document.getElementById( "total_results" );
+		var navComponents = document.getElementById( "page_components" );
+		var pageNavigation = new PageNavigation( navComponents.getElementsByClassName("page_left")[0], navComponents.getElementsByClassName("page_right")[0], navComponents.getElementsByClassName("page_results")[0] );
+
+	    twitchAPI.init( contentDiv, totalResultsSpan, pageNavigation );
+	}
+
+	function onKeyPressed( event )
+	{
+	    var evt = event || window.event;
+
+	    //listen for enter key
+	    if( evt.keyCode == 13 )
+	    {
+	    	performSearch();
+	    }
+    }
+
+    function performSearch()
+    {
+    	var querySelection = document.getElementById( "query_selection" );
+		var value = querySelection.options[querySelection.selectedIndex].value;
+
+    	if ( querySelection.value == "streams" )
+    	{
+    		twitchAPI.searchStreams( queryInput.value );
+    	}
+    	else if ( querySelection.value == "channels" )
+    	{
+    		twitchAPI.searchChannels( queryInput.value );
+    	}
+    	else if ( querySelection.value == "games" )
+    	{
+    		twitchAPI.searchGames( queryInput.value );
+    	}
+    }
+</script>
 </body>
 </html>
