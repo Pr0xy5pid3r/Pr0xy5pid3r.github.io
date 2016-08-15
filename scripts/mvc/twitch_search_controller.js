@@ -75,6 +75,14 @@ class TwitchSearchController
 		}
 
 		this._renderContent( data );
+
+		if ( this._modelList.length == 0 )
+		{
+			this._resetPages();
+			this._setupTotalResults( 0 );
+			return;
+		}
+		
 		this._parseURLS( data._links );
 	}
 
