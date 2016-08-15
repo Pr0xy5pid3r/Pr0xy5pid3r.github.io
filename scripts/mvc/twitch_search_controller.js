@@ -53,9 +53,9 @@ class TwitchSearchController
 
 	parseContent( data )
 	{
-		if ( data.status != null && status != 200 )
+		if ( data.error != null )
 		{
-			return;
+			alert( "Error: " + data.error + " - " + data.message );
 		}
 
 		this._modelList = [];
@@ -82,7 +82,7 @@ class TwitchSearchController
 			this._setupTotalResults( 0 );
 			return;
 		}
-		
+
 		this._parseURLS( data._links );
 	}
 

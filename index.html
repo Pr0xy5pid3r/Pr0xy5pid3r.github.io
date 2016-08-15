@@ -88,6 +88,12 @@
 		var querySelection = document.getElementById( "query_selection" );
 		var value = querySelection.options[querySelection.selectedIndex].value;
 
+		if ( queryInput.value == "" || queryInput.value == undefined ) 
+		{
+			alert("Please insert a search term")
+			return;
+		}
+
 		if ( querySelection.value == "streams" )
 		{
 			twitchAPI.searchStreams( queryInput.value );

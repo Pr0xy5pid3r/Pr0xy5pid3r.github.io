@@ -16,6 +16,7 @@ var jsUtil = (function ()
 		script.type = "text/javascript";
 		script.src = url;
 		script.onload = onLoadFunc;
+		script.addEventListener( "error", function() { alert( "Unable to load " + url + " please check internet connection." ); } );
 
 		document.head.appendChild(script);
 	}
