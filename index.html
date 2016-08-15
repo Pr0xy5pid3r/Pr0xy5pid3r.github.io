@@ -41,11 +41,11 @@
 
 	window.addEventListener( "load", init );
 
-    function init() 
+	function init() 
 	{
 		initTwitchAPI();
-	    initSearchButton();
-	    initQueryBar();
+		initSearchButton();
+		initQueryBar();
 	}
 
 	function initSearchButton()
@@ -67,38 +67,38 @@
 		var navComponents = document.getElementById( "page_components" );
 		var pageNavigation = new PageNavigation( navComponents.getElementsByClassName("page_left")[0], navComponents.getElementsByClassName("page_right")[0], navComponents.getElementsByClassName("page_results")[0] );
 
-	    twitchAPI.init( contentDiv, totalResultsSpan, pageNavigation );
+		twitchAPI.init( contentDiv, totalResultsSpan, pageNavigation );
 	}
 
 	function onKeyPressed( event )
 	{
-	    var evt = event || window.event;
+		var evt = event || window.event;
 
-	    //listen for enter key
-	    if( evt.keyCode == 13 )
-	    {
-	    	performSearch();
-	    }
-    }
+		//listen for enter key
+		if( evt.keyCode == 13 )
+		{
+			performSearch();
+		}
+	}
 
-    function performSearch()
-    {
-    	var querySelection = document.getElementById( "query_selection" );
+	function performSearch()
+	{
+		var querySelection = document.getElementById( "query_selection" );
 		var value = querySelection.options[querySelection.selectedIndex].value;
 
-    	if ( querySelection.value == "streams" )
-    	{
-    		twitchAPI.searchStreams( queryInput.value );
-    	}
-    	else if ( querySelection.value == "channels" )
-    	{
-    		twitchAPI.searchChannels( queryInput.value );
-    	}
-    	else if ( querySelection.value == "games" )
-    	{
-    		twitchAPI.searchGames( queryInput.value );
-    	}
-    }
+		if ( querySelection.value == "streams" )
+		{
+			twitchAPI.searchStreams( queryInput.value );
+		}
+		else if ( querySelection.value == "channels" )
+		{
+			twitchAPI.searchChannels( queryInput.value );
+		}
+		else if ( querySelection.value == "games" )
+		{
+			twitchAPI.searchGames( queryInput.value );
+		}
+	}
 </script>
 </body>
 </html>

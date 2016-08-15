@@ -31,14 +31,14 @@ var twitchAPI = (function ()
 	}
 
 	function searchChannels( query )
-  	{
-  		this._searchController.searchChannels( query, "twitchAPI.onContentLoaded");
-  	}
+	{
+		this._searchController.searchChannels( query, "twitchAPI.onContentLoaded");
+	}
 
-  	function searchGames( query )
-  	{
+	function searchGames( query )
+	{
 		this._searchController.searchGames( query, "twitchAPI.onContentLoaded");
-  	}
+	}
 
 	function onContentLoaded( data )
 	{

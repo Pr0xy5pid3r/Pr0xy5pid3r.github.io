@@ -21,8 +21,8 @@ class TwitchSearchBaseView
 		var titleText = document.createElement("a");
 		titleText.className = "contentResult-title";
 		jsUtil.addText( titleText, this._model.title, "Title");
-        titleText.href = this._model.urlLink;
-        titleText.target = "_blank";
+		titleText.href = this._model.urlLink;
+		titleText.target = "_blank";
 		divContainer.appendChild( titleText );
 
 		var desc1Text = document.createElement("span");
