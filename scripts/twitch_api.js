@@ -14,8 +14,11 @@ var twitchAPI = (function ()
 		this._pageNavigation.setupCallbacks( this.onNavLeftArrowPressed, this.onNavRightArrowPressed );
 
 		//create the mvc
-		jsUtil.loadJS("scripts/mvc/twitch_search_controller.js");
+		jsUtil.loadJS("scripts/mvc/twitch_search_controller.js", this.onSearchControllerLoaded );
+	}
 
+	function onSearchControllerLoaded()
+	{
 		//initialize the api
 		jsUtil.loadJSONP( "https://api.twitch.tv/kraken/?", "twitchAPI.onAPIInit" );
 	}
@@ -58,6 +61,7 @@ var twitchAPI = (function ()
 	return {
 		init,
 		onAPIInit,
+		onSearchControllerLoaded,
 		searchStreams,
 		searchChannels,
 		searchGames,

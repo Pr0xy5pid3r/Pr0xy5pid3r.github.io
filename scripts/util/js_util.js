@@ -10,16 +10,17 @@ var jsUtil = (function ()
 	    document.head.appendChild(css);
 	}
 
-	function loadJS ( url )
+	function loadJS ( url, onLoadFunc )
 	{
 		var script = document.createElement("script");
 	    script.type = "text/javascript";
 	    script.src = url;
+	    script.onload = onLoadFunc;
 
 	    document.head.appendChild(script);
 	}
 
-	function loadJSONP ( url, callback, params) 
+	function loadJSONP ( url, callback, params ) 
 	{
 		if ( params != undefined )
 		{
