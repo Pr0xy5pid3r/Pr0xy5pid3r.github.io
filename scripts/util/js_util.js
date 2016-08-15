@@ -2,22 +2,22 @@ var jsUtil = (function ()
 {
 	function loadCSS ( url ) 
 	{
-	    var css = document.createElement("link");
-	    css.type = "text/css";
-	    css.rel = "stylesheet";
-	    css.href = url;
+		var css = document.createElement("link");
+		css.type = "text/css";
+		css.rel = "stylesheet";
+		css.href = url;
 
-	    document.head.appendChild(css);
+		document.head.appendChild(css);
 	}
 
 	function loadJS ( url, onLoadFunc )
 	{
 		var script = document.createElement("script");
-	    script.type = "text/javascript";
-	    script.src = url;
-	    script.onload = onLoadFunc;
+		script.type = "text/javascript";
+		script.src = url;
+		script.onload = onLoadFunc;
 
-	    document.head.appendChild(script);
+		document.head.appendChild(script);
 	}
 
 	function loadJSONP ( url, callback, params ) 
@@ -33,31 +33,31 @@ var jsUtil = (function ()
 	}
 
 	function removeChildren( element )
-    {
-    	if ( element == null )
-    	{
-    		return;
-    	}
+	{
+		if ( element == null )
+		{
+			return;
+		}
 
-    	while ( element.firstChild ) 
-        {
-            element.removeChild( element.firstChild );
-        }
-    }
+		while ( element.firstChild ) 
+		{
+			element.removeChild( element.firstChild );
+		}
+	}
 
-    function addText( element, text, defaultText )
-    {
-    	if ( element != null )
-        {
-        	element.appendChild( document.createTextNode( ( text != null ) ? text : defaultText ) );
-        }
-    }
+	function addText( element, text, defaultText )
+	{
+		if ( element != null )
+		{
+			element.appendChild( document.createTextNode( ( text != null ) ? text : defaultText ) );
+		}
+	}
 
-    function updateText( element, text )
-    {
-    	removeChildren( element );
-    	addText( element, text );
-    }
+	function updateText( element, text )
+	{
+		removeChildren( element );
+		addText( element, text );
+	}
 
 	return {
 		loadJSONP,
